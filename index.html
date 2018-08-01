@@ -27,20 +27,22 @@ function getCookie(cname) {
 }
 
 function writeCookies() {
-    setCookie("demo", document.getElementById("myText").value, 30);
+    setCookie(document.getElementById("cname"), document.getElementById("cvalue").value, 30);
 }
 
 
 function readCookies() {
-    document.getElementById("demo").innerHTML = getCookie("demo");
+    document.getElementById("cvalue_r").value = getCookie(document.getElementById("cname_r"));
 }
 
 </script>
 </head>
 <body>
-<p><input type="text" id="myText" value="Please enter cookie"></p>
-<p><button onclick="writeCookies()">Write Cookies</button></p>
+<p>cname: <input type="text" id="cname" value=""></p>
+<p>cvalue: <input type="text" id="cvalue" value=""></p>
+<p><button onclick="writeCookies()">Write cookie</button></p>
+<p>cname: <input type="text" id="cname_r" value=""></p>
+<p>cvalue: <input type="text" id="cvalue_r" value="" readonly=""></p>
 <p><button onclick="readCookies()">Read Cookies</button></p>
-<p id="demo">demo</p>
 </body>
 </html>
