@@ -1,0 +1,15 @@
+<center>
+<button onclick="writeCookies()">Write Cookies</button>
+<button onclick="readCookies()">Read Cookies</button>
+<p id="demo"></p>
+</center>
+
+<script>
+function writeCookies() {
+    document.cookie = "username=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/";
+}
+
+function readCookies() {
+    document.getElementById("demo").innerHTML = document.cookie;
+}
+</script>
