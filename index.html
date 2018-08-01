@@ -27,12 +27,12 @@ function getCookie(cname) {
 }
 
 function writeCookies() {
-    setCookie(document.getElementById("cname"), document.getElementById("cvalue").value, 30);
+    setCookie(document.getElementById("cname").value, document.getElementById("cvalue").value, 30);
 }
 
 
 function readCookies() {
-    document.getElementById("cvalue_r").value = getCookie(document.getElementById("cname_r"));
+    document.getElementById("cvalue_r").value = getCookie(document.getElementById("cname_r").value);
 }
 
 </script>
