@@ -1,18 +1,46 @@
+<!DOCTYPE html>
 <html>
-<center>
-<p>Hellow world</p>
+<head>
+<script>
+
+function setCookie(cname,cvalue,exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+function writeCookies() {
+    setCookie("demo", document.getElementById("myText").value, 30);
+}
+
+
+function readCookies() {
+    document.getElementById("demo").innerHTML = getCookie("demo");
+}
+
+</script>
+</head>
+<body>
+<p><input type="text" id="myText" value="Please enter cookie"></p>
 <p><button onclick="writeCookies()">Write Cookies</button></p>
 <p><button onclick="readCookies()">Read Cookies</button></p>
 <p id="demo">demo</p>
-</center>
-
-<script>
-function writeCookies() {
-    document.cookie = "username=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/";
-}
-
-function readCookies() {
-    document.getElementById("demo").innerHTML = document.cookie;
-}
-</script>
+</body>
 </html>
