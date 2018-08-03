@@ -35,6 +35,10 @@ function readCookies() {
     document.getElementById("cvalue_r").value = getCookie(document.getElementById("cname_r").value);
 }
 
+function testJS() {
+    document.getElementById("test_js").value = "JavaScript is working";
+}
+
 </script>
 </head>
 <body>
@@ -46,5 +50,7 @@ function readCookies() {
 <p>cname: <input type="text" id="cname_r" value=""></p>
 <p>cvalue: <input type="text" id="cvalue_r" value="" readonly=""></p>
 <p><button onclick="readCookies()">Read Cookies</button></p>
+<p><input type="text" id="test_js" value="" readonly=""></p>
+<p><button onclick="testJS()">Test JS</button></p>
 </body>
 </html>
