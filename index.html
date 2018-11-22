@@ -26,13 +26,20 @@ function launchEnrollmentLink() {
     window.open("https://enterprise.google.com/android/enroll?et=" + enrollmentToken, '_self');
 }
 
+function launchInvalidEnrollmentLink() {
+        var enrollmentToken = getParameterByName("et");
+    var text = "Enroll my device";
+    window.open("https://enterprise.google.com/android/enroll/invalid", '_self');
+}
+
 </script>
 </head>
 <body onload="generateEnrollmentLink()">
 <h1>
 <p id="enrollMyDevice"></p>
 <p><a href="https://enterprise.google.com/android/enroll/invalid">Invalid token</a></p>
- <button onclick="launchEnrollmentLink()">Invalid token via JS</button> 
+<p><button onclick="launchEnrollmentLink()">Enroll my device via JS</button></p>
+<p><button onclick="launchInvalidEnrollmentLink()">Invalid token via JS</button></p> 
 </h1>
 </body>
 </html>
