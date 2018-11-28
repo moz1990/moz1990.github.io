@@ -38,6 +38,15 @@ function launchInvalidLinkLocationAssign() {
     window.location.assign("https://enterprise.google.com/android/enroll?invalid", '_self');
 }
 
+function launchEnrollmentLinkNew() {
+    var enrollmentToken = new URL(window.location.href).searchParams.get('et');
+    if (enrollmentToken != null) {
+        enrollmentLink = 'https://enterprise.google.com/android/enroll?et=' + enrollmentToken;
+    } else {
+        enrollmentLink = 'https://enterprise.google.com/android/enroll?invalid';
+    }
+    window.open(enrollmentLink, '_self');
+}
 </script>
 </head>
 <body onload="generateEnrollmentLink()">
@@ -48,6 +57,7 @@ function launchInvalidLinkLocationAssign() {
 <p><button onclick="launchEnrollmentLinkLocationAssign()">Enroll my device (window.location.assign)</button></p> 
 <p><button onclick="launchInvalidLinkOpen()">Invalid (window.open)</button></p>
 <p><button onclick="launchInvalidLinkLocationAssign()">Invalid (window.location.assign)</button></p> 
+<p><button onclick="launchEnrollmentLinkNew()">launchEnrollmentLinkNew</button></p>
 </h1>
 </body>
 </html>
