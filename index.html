@@ -47,6 +47,16 @@ function launchEnrollmentLinkNew() {
     }
     window.open(enrollmentLink, '_self');
 }
+
+function launchCloudDpcGithub() {
+    var enrollmentToken = new URL(window.location.href).searchParams.get('et');
+    if (enrollmentToken != null) {
+        enrollmentLink = 'https://clouddpc.github.io?et=' + enrollmentToken;
+    } else {
+        enrollmentLink = 'https://clouddpc.github.io?invalid';
+    }
+    window.open(enrollmentLink, '_self');
+}
 </script>
 </head>
 <body onload="generateEnrollmentLink()">
@@ -58,6 +68,7 @@ function launchEnrollmentLinkNew() {
 <p><button onclick="launchInvalidLinkOpen()">Invalid (window.open)</button></p>
 <p><button onclick="launchInvalidLinkLocationAssign()">Invalid (window.location.assign)</button></p> 
 <p><button onclick="launchEnrollmentLinkNew()">launchEnrollmentLinkNew</button></p>
+<p><button onclick="launchCloudDpcGithub()">launch clouddpc.github.io</button></p>
 </h1>
 </body>
 </html>
