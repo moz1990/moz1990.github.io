@@ -2,7 +2,6 @@
 <html>
 <head>
 <script>
-
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, '\\$&');
@@ -20,25 +19,7 @@ function generateEnrollmentLink() {
     document.getElementById("enrollMyDevice").innerHTML = result;
 }
 
-function launchEnrollmentLinkOpen() {
-    var enrollmentToken = getParameterByName("et");
-    window.open("https://enterprise.google.com/android/enroll?et=" + enrollmentToken, '_self');
-}
-
-function launchEnrollmentLinkLocationAssign() {
-    var enrollmentToken = getParameterByName("et");
-    window.location.assign("https://enterprise.google.com/android/enroll?et=" + enrollmentToken, '_self');
-}
-
-function launchInvalidLinkOpen() {
-    window.open("https://enterprise.google.com/android/enroll?invalid", '_self');
-}
-
-function launchInvalidLinkLocationAssign() {
-    window.location.assign("https://enterprise.google.com/android/enroll?invalid", '_self');
-}
-
-function launchEnrollmentLinkNew() {
+function launchEnrollmentLink() {
     var enrollmentToken = new URL(window.location.href).searchParams.get('et');
     if (enrollmentToken != null) {
         enrollmentLink = 'https://enterprise.google.com/android/enroll?et=' + enrollmentToken;
@@ -48,18 +29,11 @@ function launchEnrollmentLinkNew() {
     window.open(enrollmentLink, '_self');
 }
 
-function launchCloudDpcGithub() {
-    var enrollmentToken = new URL(window.location.href).searchParams.get('et');
-    if (enrollmentToken != null) {
-        enrollmentLink = 'https://clouddpc.github.io?et=' + enrollmentToken;
-    } else {
-        enrollmentLink = 'https://clouddpc.github.io?invalid';
-    }
-    window.open(enrollmentLink, '_self');
-}
-
 async function launchEnrollmentLinkWithDelay() {
-    await sleep(5000);
+    var delay = new URL(window.location.href).searchParams.get('delay');
+    if (delay != null) {
+        await sleep(delay);
+    }
     var enrollmentToken = new URL(window.location.href).searchParams.get('et');
     if (enrollmentToken != null) {
         enrollmentLink = 'https://enterprise.google.com/android/enroll?et=' + enrollmentToken;
@@ -78,12 +52,7 @@ function sleep(ms) {
 <h1>
 <p id="enrollMyDevice"></p>
 <p><a href="https://enterprise.google.com/android/enroll/invalid">Invalid token</a></p>
-<p><button onclick="launchEnrollmentLinkOpen()">Enroll my device (window.open)</button></p>
-<p><button onclick="launchEnrollmentLinkLocationAssign()">Enroll my device (window.location.assign)</button></p> 
-<p><button onclick="launchInvalidLinkOpen()">Invalid (window.open)</button></p>
-<p><button onclick="launchInvalidLinkLocationAssign()">Invalid (window.location.assign)</button></p> 
-<p><button onclick="launchEnrollmentLinkNew()">launchEnrollmentLinkNew</button></p>
-<p><button onclick="launchCloudDpcGithub()">launch clouddpc.github.io</button></p>
+<p><button onclick="launchEnrollmentLink()">launchEnrollmentLink</button></p>
 <p><button onclick="launchEnrollmentLinkWithDelay()">launchEnrollmentLinkWithDelay</button></p>
 </h1>
 </body>
