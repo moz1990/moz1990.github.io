@@ -57,6 +57,21 @@ function launchCloudDpcGithub() {
     }
     window.open(enrollmentLink, '_self');
 }
+
+function launchEnrollmentLinkWithDelay() {
+    await sleep(5000);
+    var enrollmentToken = new URL(window.location.href).searchParams.get('et');
+    if (enrollmentToken != null) {
+        enrollmentLink = 'https://enterprise.google.com/android/enroll?et=' + enrollmentToken;
+    } else {
+        enrollmentLink = 'https://enterprise.google.com/android/enroll?invalid';
+    }
+    window.open(enrollmentLink, '_self');
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 </script>
 </head>
 <body onload="generateEnrollmentLink()">
@@ -69,6 +84,7 @@ function launchCloudDpcGithub() {
 <p><button onclick="launchInvalidLinkLocationAssign()">Invalid (window.location.assign)</button></p> 
 <p><button onclick="launchEnrollmentLinkNew()">launchEnrollmentLinkNew</button></p>
 <p><button onclick="launchCloudDpcGithub()">launch clouddpc.github.io</button></p>
+<p><button onclick="launchEnrollmentLinkWithDelay()">launchEnrollmentLinkWithDelay</button></p>
 </h1>
 </body>
 </html>
