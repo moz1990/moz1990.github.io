@@ -12,6 +12,10 @@ function launchEnrollmentLink() {
     window.open(enrollmentLink, '_self');
 }
 
+function launchInvalidEnrollmentLink() {
+    window.open("https://enterprise.google.com/android/enroll?invalid", '_self');
+}
+
 async function launchEnrollmentLinkWithDelay() {
     var delay = new URL(window.location.href).searchParams.get('delay');
     if (delay != null) {
@@ -48,6 +52,7 @@ function sleep(ms) {
 <body>
 <h1>
 <p><button onclick="launchEnrollmentLink()">launchEnrollmentLink</button></p>
+<p><button onclick="launchInvalidEnrollmentLink()">launchInvalidEnrollmentLink</button></p>
 <p><button onclick="launchEnrollmentLinkWithDelay()">launchEnrollmentLinkWithDelay</button></p>
 <p><button onclick="launchPlayEnrollmentLink()">launchPlayEnrollmentLink</button></p>
 </h1>
